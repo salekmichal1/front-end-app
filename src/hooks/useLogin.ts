@@ -5,7 +5,7 @@ import { useAuthContext } from './useAuthContext';
 
 export function useLogin() {
   const [error, setError] = useState<Error | null>(null);
-  const [isPending, setIsPending] = useState<boolean | null>(null);
+  const [isPending, setIsPending] = useState<boolean>(false);
   const { dispatch } = useAuthContext();
 
   const login = async function (email: string, password: string) {
@@ -24,10 +24,9 @@ export function useLogin() {
         throw Error('Provide email and password');
       }
 
-      const data = await res.json();
-      console.log(data);
-      const user: UserElement = data.find(
-        (user: any) => user.password === password && user.email === email
+      const data: UserElement[] = await res.json();
+      const user: UserElement | undefined = data.find(
+        user => user.password === password && user.email === email
       );
 
       if (user) {

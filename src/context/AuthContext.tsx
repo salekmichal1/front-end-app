@@ -15,41 +15,24 @@ type UserActions = {
   payload: UserElement;
 };
 
-const initialSate = {
-  id: 0,
-  name: '',
-  username: '',
-  email: '',
-  password: '',
-  address: {
-    street: '',
-    suite: '',
-    city: '',
-    zipcode: '',
-    geo: {
-      lat: '',
-      lng: '',
-    },
-  },
-  phone: '',
-  website: '',
-  company: {
-    name: '',
-    catchPhrase: '',
-    bs: '',
-  },
+type InitialState = {
+  user: UserElement | null;
+};
+
+const initialState: InitialState = {
+  user: null,
 };
 
 export const AuthContext = createContext<{
-  state: UserActions;
+  state: InitialState;
   dispatch: Dispatch<UserActions>;
-} | null>({
-  state: { type: UserSateType.LOGOUT, payload: initialSate },
+}>({
+  state: initialState,
   dispatch: () => null,
 });
 
 // setting up auth context options
-export const authReducer = function (state: UserActions, action: UserActions) {
+export const authReducer = function (state: InitialState, action: UserActions) {
   switch (action.type) {
     case 'LOGIN':
       return { ...state, user: action.payload };
@@ -64,10 +47,7 @@ export const authReducer = function (state: UserActions, action: UserActions) {
 export const AuthContextProvider = function ({
   children,
 }: AuthContextProviderProps) {
-  const [state, dispatch] = useReducer(authReducer, {
-    type: UserSateType.LOGOUT,
-    payload: initialSate,
-  });
+  const [state, dispatch] = useReducer(authReducer, initialState);
   console.log(state);
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
