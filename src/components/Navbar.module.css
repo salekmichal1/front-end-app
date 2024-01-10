@@ -1,9 +1,10 @@
 /* navbar styles */
 .navbar {
   width: 100%;
-  background: #48ba7e;
+  background-image: linear-gradient(to right, #39b385, #9be15d);
   padding: 20px 10px;
   box-sizing: border-box;
+  font-size: 18px;
 }
 .navbar ul {
   display: flex;
@@ -11,32 +12,37 @@
   max-width: 960px;
   align-items: center;
 }
-.title {
+.navbar .title {
   margin-right: auto;
   font-weight: bold;
   letter-spacing: 1px;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 .navbar button,
 .navbar a {
-  margin-left: 16px;
+  margin-left: 24px;
 }
+
+.navbar .title a {
+  margin-left: 0px;
+}
+
 .navbar a {
-  color: #000;
+  color: #222;
   text-decoration: none;
 }
 .navbar-btn {
   background: none;
-  border: 2px solid #000;
+  border: 2px solid #222;
   padding: 6px 12px;
   border-radius: 4px;
-  color: #000;
+  color: #222;
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
 }
 
 .navbar-btn:hover {
-  background: #000;
+  background: #222;
   color: #fff;
 }

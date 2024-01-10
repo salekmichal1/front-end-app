@@ -1,0 +1,93 @@
+.create-album-head {
+  color: #f5f5f5;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 36px;
+}
+
+.create {
+  color: #f5f5f5;
+  max-width: 480px;
+  margin: 60px auto;
+}
+.create label span {
+  display: block;
+  margin: 30px 0 10px;
+  font-size: 20px;
+}
+
+.create input {
+  color: #333;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #d4d4d4;
+  background-color: #fff;
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: 44px;
+  box-sizing: border-box;
+  white-space: normal;
+  line-height: 1;
+  font-family: Poppins, sans-serif;
+}
+
+.create button {
+  display: block;
+  width: 100px;
+  margin: 20px auto;
+}
+
+.photos__add-input {
+  display: flex;
+  align-items: center;
+}
+
+.photos__add-input button {
+  margin: 0 0 0 30px;
+  height: 44px;
+}
+
+.photos__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 50px;
+  margin: 50px;
+  justify-content: center;
+}
+
+.photos__link {
+  cursor: pointer;
+  text-decoration: underline;
+  width: fit-content;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.photos__tip {
+  color: #39b385;
+}
+
+.photos__url-tip {
+  color: #39b385;
+  margin-bottom: 20px;
+}
+
+.photos__item {
+  width: 400px;
+  text-align: center;
+  color: #f5f5f5;
+  cursor: pointer;
+}
+
+.photos__img {
+  margin-bottom: 10px;
+  width: 300px;
+  height: auto;
+}
+
+.delete-btn {
+  margin-top: 10px;
+}

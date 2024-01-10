@@ -1,0 +1,6 @@
+json-server --watch ./data/users.json --port 3000
+json-server --watch ./data/todos.json --port 4000
+json-server --watch ./data/posts.json --port 5000
+json-server --watch ./data/comments.json --port 6001
+json-server --watch ./data/albums.json --port 7000
+json-server --watch ./data/photos.json --port 8000

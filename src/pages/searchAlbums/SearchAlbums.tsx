@@ -1,0 +1,51 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import AlbumsSearch from '../../components/AlbumsSearch';
+import { useFetch } from '../../hooks/useFetch';
+import { Album } from '../../model/types';
+import style from './SearchAlbums.module.css';
+import { ReactComponent as AlbumIcon } from './../../assets/photo_library.svg';
+
+export default function SearchAlbums() {
+  const queryString: string = useLocation().search;
+  const queryParams: URLSearchParams = new URLSearchParams(queryString);
+  const query: string | null = queryParams.get('q');
+
+  const url = 'http://localhost:7000/albums/?q=' + query;
+  const { data, isPending, error } = useFetch<Album[]>(url);
+
+  const navigate = useNavigate();
+  return (
+    <div>
+      <h2 className={style['albums-head']}>Albums</h2>
+      <div className={style.albums__controls}>
+        <AlbumsSearch />
+        <Link to="createAlbum">
+          <button className={`btn ${style['create-album-btn']}`}>
+            Add album
+          </button>
+        </Link>
+      </div>
+      {isPending && <p className="loading">Loading...</p>}
+      {error && <p>{error.toString()}</p>}
+
+      {isPending && <p className="loading">Loading...</p>}
+      {error && <p>{error.toString()}</p>}
+      {data && (
+        <div className={style.albums}>
+          {data.map(album => (
+            <div key={album.id} className={style['albums__item']}>
+              <AlbumIcon className={style['albums__icon']} />
+              <p>{album.title}</p>
+
+              <button
+                className={`btn ${style.albums__btn}`}
+                onClick={() => navigate(`/albums/edit/${album.id}`)}>
+                Open album
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
