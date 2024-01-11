@@ -297,6 +297,7 @@ export default function CreateAlbum() {
               elementClassNames={style.photos__container}>
               {photos.map(photo => (
                 <LightGalleryItem
+                  key={photo.id}
                   src={photo.url}
                   thumbnailUrl={photo.thumbnailUrl}
                   photoTitle={photo.title}

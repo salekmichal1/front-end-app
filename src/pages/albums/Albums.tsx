@@ -67,10 +67,8 @@ export default function Albums() {
       <h2 className={style['albums-head']}>Albums</h2>
       <div className={style.albums__controls}>
         <AlbumsSearch />
-        <Link to="createAlbum">
-          <button className={`btn ${style['create-album-btn']}`}>
-            Add album
-          </button>
+        <Link className={`btn ${style['create-album-btn']}`} to="createAlbum">
+          Add album
         </Link>
       </div>
       {isPending && <p className="loading">Loading...</p>}

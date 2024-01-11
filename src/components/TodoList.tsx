@@ -1,11 +1,11 @@
-import { Post, Todo } from '../model/types';
+import { Todo } from '../model/types';
 import style from './Todo.module.css';
 
 import { ReactComponent as DeleteIcon } from './../assets/delete.svg';
 import { ReactComponent as EditIcon } from './../assets/edit.svg';
 import { ReactComponent as DoneIcon } from './../assets/done.svg';
 import { ReactComponent as BlockIcon } from './../assets/block.svg';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { useAuthContext } from '../hooks/useAuthContext';
 

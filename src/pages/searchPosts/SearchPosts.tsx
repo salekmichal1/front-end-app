@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Comments from '../../components/Comments';
 import PostsSearch from '../../components/PostsSearch';
@@ -37,8 +36,10 @@ export default function SearchPosts() {
       <h2 className={style['posts-head']}>Posts</h2>
       <div className={style.posts__controls}>
         <PostsSearch />
-        <Link to="/posts/createPost">
-          <button className={`btn ${style.posts__btn}`}>Add post</button>
+        <Link
+          className={`btn ${style['create-post-btn']}`}
+          to="/posts/createPost">
+          Add post
         </Link>
       </div>
       {isPending && usersPending && <p className="loading">Loading...</p>}

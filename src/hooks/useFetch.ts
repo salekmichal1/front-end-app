@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Post, Todo } from '../model/types';
 
 export function useFetch<T>(url: string, method: string = 'GET') {
   const [data, setData] = useState<T | null>(null);

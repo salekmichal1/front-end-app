@@ -13,13 +13,13 @@ export default function Posts() {
   const navigate = useNavigate();
 
   const {
-    getData,
+    getData: getPosts,
     data: postsData,
     isPending: postsIsPending,
     error: postsError,
   } = useFetch<Post[]>('http://localhost:5000/posts');
 
-  const { deleteData, data: postDeleteData } = useFetch<Post>(
+  const { deleteData: deltePosts, data: postDeleteData } = useFetch<Post>(
     `http://localhost:5000/posts/${postForDeleteId}`,
     'DELETE'
   );
@@ -31,6 +31,7 @@ export default function Posts() {
   } = useFetch<UserElement[]>('http://localhost:3000/users');
 
   const {
+    getData: getComments,
     data: commentsData,
     isPending: commentsPending,
     error: commentsError,
@@ -38,20 +39,49 @@ export default function Posts() {
 
   const handleDelete = function (postId: number) {
     setPostForDeleteId(postId);
-    deleteData();
+    getComments();
+    deltePosts();
+  };
+
+  const deleteComments = async function () {
+    const commentsForDelete = await commentsData?.filter(
+      comment => comment.postId === postForDeleteId
+    );
+    console.log(commentsForDelete);
+
+    try {
+      if (commentsForDelete) {
+        for (let i = 0; i < commentsForDelete.length; i++) {
+          const resCommentsDelete = await fetch(
+            `http://localhost:6001/comments/${commentsForDelete[i].id}`,
+            {
+              method: 'DELETE',
+            }
+          );
+          if (!resCommentsDelete.ok) {
+            throw Error(resCommentsDelete.statusText);
+          }
+          const dataCommentsDelete: string = await resCommentsDelete.json();
+          console.log(dataCommentsDelete);
+        }
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
 
   useEffect(() => {
-    getData();
-  }, [postDeleteData, postsData]);
+    deleteComments();
+    getPosts();
+  }, [postDeleteData]);
 
   return (
     <div>
       <h2 className={style['posts-head']}>Posts</h2>
       <div className={style.posts__controls}>
         <PostsSearch />
-        <Link to="createPost">
-          <button className={`btn ${style.posts__btn}`}>Add post</button>
+        <Link className={`btn ${style['create-post-btn']}`} to="createPost">
+          Add post
         </Link>
       </div>
       {postsIsPending && usersPending && <p className="loading">Loading...</p>}
