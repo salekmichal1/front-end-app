@@ -29,8 +29,6 @@ export default function SearchPosts() {
     error: commentsError,
   } = useFetch<Comment[]>('http://localhost:6001/comments');
 
-  console.log(commentsData);
-
   return (
     <div>
       <h2 className={style['posts-head']}>Posts</h2>

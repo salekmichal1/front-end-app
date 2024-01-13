@@ -3511,13 +3511,6 @@
       "postId": 2,
       "name": "",
       "email": "abc@gmail.com",
-      "body": "dupa",
-      "id": 502
-    },
-    {
-      "postId": 2,
-      "name": "",
-      "email": "abc@gmail.com",
       "body": "123",
       "id": 503
     },
@@ -3611,6 +3604,13 @@
       "email": "abc@gmail.com",
       "body": "qq",
       "id": 516
+    },
+    {
+      "postId": 1,
+      "name": "",
+      "email": "abc@gmail.com",
+      "body": "ghghj",
+      "id": 517
     }
   ]
 }

@@ -52,14 +52,13 @@ export default function CreatePost() {
     }
   }, [locationPath, id]);
 
-  const { postData, data } = useFetch<Post>(
-    'http://localhost:5000/posts',
-    'POST'
+  const { patchData, data } = useFetch<Post>(
+    'http://localhost:5000/posts/' + id,
+    'PATCH'
   );
   const handleSubmit = function (e: React.SyntheticEvent) {
     e.preventDefault();
-    postData({
-      userId: state.user?.id,
+    patchData({
       title: title,
       body: content,
     });

@@ -44,10 +44,9 @@ export default function Posts() {
   };
 
   const deleteComments = async function () {
-    const commentsForDelete = await commentsData?.filter(
+    const commentsForDelete = commentsData?.filter(
       comment => comment.postId === postForDeleteId
     );
-    console.log(commentsForDelete);
 
     try {
       if (commentsForDelete) {
