@@ -17,15 +17,15 @@ export default function Albums() {
     isPending,
     error,
   } = useFetch<Album[]>(
-    'http://localhost:7000/albums?userId=' + state.user?.id
+    'https://front-end-app-server.onrender.com/albums?userId=' + state.user?.id
   );
 
   const { getData: getPhotosData, data: photosData } = useFetch<Photo[]>(
-    `http://localhost:8000/photos?albumId=${albumIdForDelete}`
+    `https://front-end-app-server.onrender.com/photos?albumId=${albumIdForDelete}`
   );
 
   const { deleteData: deleteAlbum, data: albumDeleteData } = useFetch<Album>(
-    `http://localhost:7000/albums/${albumIdForDelete}`,
+    `https://front-end-app-server.onrender.com/albums/${albumIdForDelete}`,
     'DELETE'
   );
 
@@ -41,7 +41,7 @@ export default function Albums() {
         try {
           for (let i = 0; i < photosData.length; i++) {
             const resPhotos = await fetch(
-              `http://localhost:8000/photos/${photosData[i].id}`,
+              `https://front-end-app-server.onrender.com/photos/${photosData[i].id}`,
               {
                 method: 'DELETE',
               }

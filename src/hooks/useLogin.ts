@@ -17,7 +17,9 @@ export function useLogin() {
     try {
       localStorage.removeItem('token');
 
-      const res = await fetch('http://localhost:3000/users');
+      const res = await fetch(
+        'https://front-end-app-server.onrender.com/users'
+      );
 
       if (!res.ok) {
         throw Error(res.statusText);

@@ -28,22 +28,22 @@ export default function TodoList(todos: { todos: Todo[] }) {
   const ref = useRef<HTMLInputElement>(null);
 
   const { patchData: patchDataStatus } = useFetch<Todo>(
-    `http://localhost:4000/todos/${todoUrlIdStatus}`,
+    `https://front-end-app-server.onrender.com/todos/${todoUrlIdStatus}`,
     'PATCH'
   );
 
   const { patchData: patchDataEdit } = useFetch<Todo>(
-    `http://localhost:4000/todos/${todoUrlIdEdit}`,
+    `https://front-end-app-server.onrender.com/todos/${todoUrlIdEdit}`,
     'PATCH'
   );
 
   const { postData, data } = useFetch<Todo>(
-    `http://localhost:4000/todos/`,
+    `https://front-end-app-server.onrender.com/todos/`,
     'POST'
   );
 
   const { deleteData } = useFetch<Todo>(
-    `http://localhost:4000/todos/${todoDeleteId}`,
+    `https://front-end-app-server.onrender.com/todos/${todoDeleteId}`,
     'DELETE'
   );
 

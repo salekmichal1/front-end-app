@@ -20,7 +20,7 @@ export default function Comments({
     useState<Comment[]>(commentsData);
   const [comment, setComment] = useState<string>();
   const { postData, data } = useFetch<Comment>(
-    'http://localhost:6001/comments',
+    'https://front-end-app-server.onrender.com/comments',
     'POST'
   );
 

@@ -24,7 +24,9 @@ export default function CreatePost() {
     setIsPending(true);
     const fetchData = async function () {
       try {
-        const res = await fetch('http://localhost:5000/posts/' + id);
+        const res = await fetch(
+          'https://front-end-app-server.onrender.com/posts/' + id
+        );
 
         if (!res.ok) {
           throw Error(res.statusText);
@@ -53,7 +55,7 @@ export default function CreatePost() {
   }, [locationPath, id]);
 
   const { patchData, data } = useFetch<Post>(
-    'http://localhost:5000/posts/' + id,
+    'https://front-end-app-server.onrender.com/posts/' + id,
     'PATCH'
   );
   const handleSubmit = function (e: React.SyntheticEvent) {

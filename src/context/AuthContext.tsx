@@ -58,7 +58,7 @@ export const AuthContextProvider = function ({
     if (localStorage.getItem('token') !== null) {
       const findUserByToken = async function () {
         try {
-          const res = await fetch('http://localhost:3000/users');
+          const res = await fetch('https://front-end-app-server.onrender.com/users');
           if (!res.ok) {
             throw Error(res.statusText);
           }

@@ -17,10 +17,10 @@ export default function Posts() {
     data: postsData,
     isPending: postsIsPending,
     error: postsError,
-  } = useFetch<Post[]>('http://localhost:5000/posts');
+  } = useFetch<Post[]>('https://front-end-app-server.onrender.com/posts');
 
   const { deleteData: deltePosts, data: postDeleteData } = useFetch<Post>(
-    `http://localhost:5000/posts/${postForDeleteId}`,
+    `https://front-end-app-server.onrender.com/posts/${postForDeleteId}`,
     'DELETE'
   );
 
@@ -28,14 +28,16 @@ export default function Posts() {
     data: usersData,
     isPending: usersPending,
     error: usersError,
-  } = useFetch<UserElement[]>('http://localhost:3000/users');
+  } = useFetch<UserElement[]>(
+    'https://front-end-app-server.onrender.com/users'
+  );
 
   const {
     getData: getComments,
     data: commentsData,
     isPending: commentsPending,
     error: commentsError,
-  } = useFetch<Comment[]>('http://localhost:6001/comments');
+  } = useFetch<Comment[]>('https://front-end-app-server.onrender.com/comments');
 
   const handleDelete = function (postId: number) {
     setPostForDeleteId(postId);
@@ -52,7 +54,7 @@ export default function Posts() {
       if (commentsForDelete) {
         for (let i = 0; i < commentsForDelete.length; i++) {
           const resCommentsDelete = await fetch(
-            `http://localhost:6001/comments/${commentsForDelete[i].id}`,
+            `https://front-end-app-server.onrender.com/comments/${commentsForDelete[i].id}`,
             {
               method: 'DELETE',
             }

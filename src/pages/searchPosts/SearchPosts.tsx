@@ -11,7 +11,7 @@ export default function SearchPosts() {
   const queryParams: URLSearchParams = new URLSearchParams(queryString);
   const query: string | null = queryParams.get('q');
 
-  const url = 'http://localhost:5000/posts/?q=' + query;
+  const url = 'https://front-end-app-server.onrender.com/posts/?q=' + query;
   const { data, isPending, error } = useFetch<Post[]>(url);
 
   const { state } = useAuthContext();
@@ -21,13 +21,15 @@ export default function SearchPosts() {
     data: usersData,
     isPending: usersPending,
     error: usersError,
-  } = useFetch<UserElement[]>('http://localhost:3000/users');
+  } = useFetch<UserElement[]>(
+    'https://front-end-app-server.onrender.com/users'
+  );
 
   const {
     data: commentsData,
     isPending: commentsPending,
     error: commentsError,
-  } = useFetch<Comment[]>('http://localhost:6001/comments');
+  } = useFetch<Comment[]>('https://front-end-app-server.onrender.com/comments');
 
   return (
     <div>

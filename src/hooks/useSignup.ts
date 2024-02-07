@@ -20,7 +20,9 @@ export function useSignup() {
     try {
       localStorage.removeItem('token');
       // finding last id, to add new one
-      const res = await fetch('http://localhost:3000/users');
+      const res = await fetch(
+        'https://front-end-app-server.onrender.com/users'
+      );
       const data: UserElement[] = await res.json();
 
       const findNewId = async function () {
@@ -66,13 +68,16 @@ export function useSignup() {
             password: password,
             token: token,
           };
-          const res = await fetch('http://localhost:3000/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-          });
+          const res = await fetch(
+            'https://front-end-app-server.onrender.com/users',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(user),
+            }
+          );
 
           if (!res) {
             throw new Error('Signup went wrong');

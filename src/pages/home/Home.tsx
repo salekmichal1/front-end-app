@@ -6,7 +6,7 @@ import { Todo } from '../../model/types';
 export default function Home() {
   const { state } = useAuthContext();
   const { data, isPending, error } = useFetch<Todo[]>(
-    `http://localhost:4000/todos?userId=${state.user?.id}`
+    `https://front-end-app-server.onrender.com/todos?userId=${state.user?.id}`
   );
 
   return (

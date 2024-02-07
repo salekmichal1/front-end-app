@@ -33,17 +33,17 @@ export default function CreateAlbum() {
 
   const { state } = useAuthContext();
   const { postData: postAlbumData, data: albumData } = useFetch<Album>(
-    'http://localhost:7000/albums',
+    'https://front-end-app-server.onrender.com/albums',
     'POST'
   );
 
   const { patchData: patchAlbumData } = useFetch<Album>(
-    `http://localhost:7000/albums/${id}`,
+    `https://front-end-app-server.onrender.com/albums/${id}`,
     'PATCH'
   );
 
   const { deleteData: deletePhotos, data: photosDeleteData } = useFetch<Photo>(
-    `http://localhost:8000/photos/${photoIdForDelete}`,
+    `https://front-end-app-server.onrender.com/photos/${photoIdForDelete}`,
     'DELETE'
   );
 
@@ -52,9 +52,11 @@ export default function CreateAlbum() {
     const fetchData = async function () {
       try {
         const resPhotos = await fetch(
-          'http://localhost:8000/photos?albumId=' + id
+          'https://front-end-app-server.onrender.com/photos?albumId=' + id
         );
-        const resAlbum = await fetch('http://localhost:7000/albums/' + id);
+        const resAlbum = await fetch(
+          'https://front-end-app-server.onrender.com/albums/' + id
+        );
         if (!resPhotos.ok) {
           throw Error(resPhotos.statusText);
         }
@@ -115,16 +117,19 @@ export default function CreateAlbum() {
         setIsPending(true);
         try {
           for (let i = 0; i < addingNewPhotos.length; i++) {
-            const resPhotos = await fetch('http://localhost:8000/photos', {
-              method: 'POST',
-              body: JSON.stringify({
-                albumId: Number(id),
-                title: 'title',
-                url: addingNewPhotos[i],
-                thumbnailUrl: addingNewPhotos[i],
-              }),
-              headers: { 'Content-Type': 'application/json' },
-            });
+            const resPhotos = await fetch(
+              'https://front-end-app-server.onrender.com/photos',
+              {
+                method: 'POST',
+                body: JSON.stringify({
+                  albumId: Number(id),
+                  title: 'title',
+                  url: addingNewPhotos[i],
+                  thumbnailUrl: addingNewPhotos[i],
+                }),
+                headers: { 'Content-Type': 'application/json' },
+              }
+            );
             if (!resPhotos.ok) {
               throw Error(resPhotos.statusText);
             }

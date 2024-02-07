@@ -12,7 +12,7 @@ export default function SearchAlbums() {
   const queryParams: URLSearchParams = new URLSearchParams(queryString);
   const query: string | null = queryParams.get('q');
 
-  const url = 'http://localhost:7000/albums/?q=' + query;
+  const url = 'https://front-end-app-server.onrender.com/albums/?q=' + query;
   const { data, isPending, error } = useFetch<Album[]>(url);
 
   const navigate = useNavigate();
