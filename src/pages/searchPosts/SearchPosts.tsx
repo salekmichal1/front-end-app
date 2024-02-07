@@ -48,8 +48,8 @@ export default function SearchPosts() {
           {error.toString()}, {usersError.toString()}
         </p>
       )}
+      {data?.length === 0 && <p className="loading">Posts not found </p>}
       <div className={style.posts}>
-        {commentsPending && <p className="loading">Loading...</p>}
         {data &&
           usersData &&
           data.map(post => (
