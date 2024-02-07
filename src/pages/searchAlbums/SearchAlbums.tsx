@@ -30,7 +30,7 @@ export default function SearchAlbums() {
       {isPending && <p className="loading">Loading...</p>}
       {error && <p>{error.toString()}</p>}
 
-      {data?.length === 0 && <p className="loading">Posts not found </p>}
+      {data?.length === 0 && <p className="loading">Albums not found </p>}
 
       {data && (
         <div className={style.albums}>
